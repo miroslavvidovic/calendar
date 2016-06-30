@@ -1,0 +1,29 @@
+{
+  "name": "calendar",
+  "homepage": "https://github.com/miroslavvidovic/calendar",
+  "authors": [
+    "Miroslav Vidovic <miroslav-vidovic@hotmail.com>"
+  ],
+  "description": "Appointments managment application",
+  "main": "",
+  "keywords": [
+    "calendar",
+    "task",
+    "appointment"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.6",
+    "fullcalendar": "^2.7.3",
+    "jquery-ui": "^1.11.4",
+    "pure": "^0.6.0"
+  }
+}
