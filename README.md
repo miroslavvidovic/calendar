@@ -1,2 +1,2 @@
 # calendar
-Managing appointments with jquery full calendar.
+Managing appointments with jQuery full calendar and PHP backend.

@@ -1,99 +1,115 @@
 <?php
 
-namespace Calendar;
+namespace Calendar\Model;
 
-class Event
+/** 
+ * @Entity
+ * @InheritanceType("JOINED")
+ *  */
+abstract class CalendarEvent
 {
     /*
-     * @var $id int
+     * @var $id int Uniquely identifies the given event
      */
+    /** @Id @Column(type="integer") @GeneratedValue*/
     protected $id;
     
     /*
-     * @var $title string
+     * @var $title string The text on an event's element
      */
+    /** @Column(type="string") */
     protected $title;
             
     /*
-     * @var $allDay boolean
+     * @var $allDay boolean Event occurs at a specific time-of-day or it is an 
+     *                      all day event
      */
+    /** @Column(type="boolean", name="all_day", nullable=true)) */
     protected $allDay;
     
     /*
-     * @var $start date/time (ISO 8601)
+     * @var $start date/time (ISO 8601) The date/time an event begins
      */
+    /** @Column(type="datetime", name="start_date") */
     protected $start;
     
     /*
-     * @var $end date/time (ISO 8601)
+     * @var $end date/time (ISO 8601) The date/time an event ends 
      */
+    /** @Column(type="datetime", name="end_date") */
     protected $end;
     
-    # After this all are optinal
-    
     /*
-     * @var $url string
+     * @var $url string URL that will be visited when this event is clicked by the user
      */
+    /** @Column(type="string", nullable=true) */
     protected $url;
     
     /*
      * @var $className string  A CSS class atached to the element
      */
+    /** @Column(type="string", nullable=true, name = "class_name") */
     protected $className;
     
     /*
-     * @var $editable boolean
+     * @var $editable boolean  Determines if the events can be dragged and resized
      */
+    /** @Column(type="boolean", nullable=true) */
     protected $editable;
     
     /*
-     * @var $startEditable boolean
+     * @var $startEditable boolean Allow events' start times to be editable through dragging
      */
+    /** @Column(type="boolean", name="start_editable", nullable=true) */
     protected $startEditable;
     
     /*
-     * @var $durationEditable boolean
+     * @var $durationEditable boolean Allow events' durations to be editable through resizing
      */
+    /** @Column(type="boolean", name="duration_editable", nullable=true) */
     protected $durationEditable;
     
     /*
-     * @var $rendering string
+     * @var $rendering string  Render and event in the background
      */
+    /** @Column(type="string", nullable=true) */
     protected $rendering;
     
     /*
-     * @var $overlap boolean
+     * @var $overlap boolean Determines if events on the calendar, when dragged 
+     *                       and resized, are allowed to overlap each other
      */
+    /** @Column(type="boolean", nullable=true) */
     protected $overlap;
     
     /*
-     * @var $constraint string
+     * @var $constraint string Limits event dragging and resizing to certain windows of time
      */
+    /** @Column(type="string", nullable=true, name="constraint_limit") */
     protected $constraint;
-            
+     
     /*
-     * @var $source string
+     * @var $color string  Sets the background and border colors
      */
-    protected $source;
-    
-    /*
-     * @var $color string
-     */
+    /** @Column(type="string", nullable=true) */
     protected $color;
     
     /*
-     * @var $backgroundColor string
+     * @var $backgroundColor string  Sets the background color 
      */
+    /** @Column(type="string", name=background_color, nullable=true) */
     protected $backgroundColor;
     
     /*
-     * @var $borderColor string
+     * @var $borderColor string  Sets the border color
      */
+    /** @Column(type="string", name="border_color", nullable=true) */
     protected $borderColor;
     
     /*
-     * @var $textColor string
+     * @var $textColor string  Sets the text color
      */
+    /** @Column(type="string", name="text_color", nullable=true) */
     protected $textColor;
     
     function __construct()
