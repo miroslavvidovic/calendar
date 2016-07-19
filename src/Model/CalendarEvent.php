@@ -48,7 +48,7 @@ abstract class CalendarEvent
     /*
      * @var $className string  A CSS class atached to the element
      */
-    /** @Column(type="string", nullable=true, name = "class_name") */
+    /** @Column(type="string", name="class_name", nullable=true) */
     protected $className;
     
     /*
@@ -97,7 +97,7 @@ abstract class CalendarEvent
     /*
      * @var $backgroundColor string  Sets the background color 
      */
-    /** @Column(type="string", name=background_color, nullable=true) */
+    /** @Column(type="string", name="background_color", nullable=true) */
     protected $backgroundColor;
     
     /*
