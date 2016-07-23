@@ -6,7 +6,7 @@ $(document).ready(function() {
       center: 'title',
       right: 'month, agendaWeek, agendaDay'
     },
-    events: '../src/Feed.php',
+    events: '../src/Test2.php',
     editable: true
   });
 });
