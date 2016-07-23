@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<database name="default" defaultIdMethod="native" namespace="ORM" defaultPhpNamingMethod="underscore">
+  <table name="CalendarEvent" idMethod="native" phpName="Calendarevent" namespace="ORM">
+    <column name="id" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="title" phpName="Title" type="VARCHAR" size="255" required="true"/>
+    <column name="all_day" phpName="AllDay" type="BOOLEAN" size="1"/>
+    <column name="start_date" phpName="StartDate" type="TIMESTAMP" required="true"/>
+    <column name="end_date" phpName="EndDate" type="TIMESTAMP" required="true"/>
+    <column name="url" phpName="Url" type="VARCHAR" size="255"/>
+    <column name="editable" phpName="Editable" type="BOOLEAN" size="1"/>
+    <column name="start_editable" phpName="StartEditable" type="BOOLEAN" size="1"/>
+    <column name="duration_editable" phpName="DurationEditable" type="BOOLEAN" size="1"/>
+    <column name="rendering" phpName="Rendering" type="VARCHAR" size="255"/>
+    <column name="overlap" phpName="Overlap" type="BOOLEAN" size="1"/>
+    <column name="constraint_limit" phpName="ConstraintLimit" type="VARCHAR" size="255"/>
+    <column name="color" phpName="Color" type="VARCHAR" size="255"/>
+    <column name="class_name" phpName="ClassName" type="VARCHAR" size="255"/>
+    <column name="background_color" phpName="BackgroundColor" type="VARCHAR" size="255"/>
+    <column name="border_color" phpName="BorderColor" type="VARCHAR" size="255"/>
+    <column name="text_color" phpName="TextColor" type="VARCHAR" size="255"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="InnoDB"/>
+    </vendor>
+  </table>
+  <table name="DentistEvent" idMethod="native" phpName="Dentistevent" namespace="ORM">
+    <column name="id" phpName="Id" type="INTEGER" primaryKey="true" required="true"/>
+    <column name="info" phpName="Info" type="VARCHAR" size="255"/>
+    <column name="CalendarEvent_id" type="integer" />
+    <foreign-key foreignTable="CalendarEvent" name="FK_B5883ACFBF396750" onDelete="CASCADE">
+      <reference local="id" foreign="id"/>
+    </foreign-key>
+    <behavior name="delegate">
+      <parameter name="to" value="CalendarEvent" />
+    </behavior>
+    <vendor type="mysql">
+      <parameter name="Engine" value="InnoDB"/>
+    </vendor>
+  </table>
+  <table name="WorkEvent" idMethod="native" phpName="Workevent" namespace="ORM">
+    <column name="id" phpName="Id" type="INTEGER" primaryKey="true" required="true"/>
+    <column name="description" phpName="Description" type="VARCHAR" size="255"/>
+    <column name="location" phpName="Location" type="VARCHAR" size="255"/>
+    <column name="CalendarEvent_id" type="integer" />
+    <foreign-key foreignTable="CalendarEvent" name="FK_DC786623BF396750" onDelete="CASCADE">
+      <reference local="id" foreign="id"/>
+    </foreign-key>
+    <behavior name="delegate">
+      <parameter name="to" value="CalendarEvent" />
+    </behavior>
+    <vendor type="mysql">
+      <parameter name="Engine" value="InnoDB"/>
+    </vendor>
+  </table>
+</database>
